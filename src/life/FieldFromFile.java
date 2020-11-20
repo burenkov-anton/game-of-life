@@ -27,7 +27,7 @@ class FieldFromFile {
             System.out.println("Error: Cannot read file: " + e.getMessage());
         }
         System.out.println("Random field will be generated");
-        return new RandomField();
+        return RandomField.makeRandomField();
     }
 
 }

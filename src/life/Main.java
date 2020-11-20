@@ -31,7 +31,7 @@ public class Main {
     public static Field makeField(String[] args) {
         String fileName = getFileName(args);
         if (fileName.equals("")) {
-            return new RandomField();
+            return RandomField.makeRandomField();
         } else {
             return FieldFromFile.makeFieldFromFile(fileName);
         }

@@ -2,13 +2,9 @@ package life;
 
 class Field {
 
-    protected int size;
+    private int size;
 
-    protected boolean[][] cells;
-
-    protected Field(int size) {
-        this.size = size;
-    }
+    private boolean[][] cells;
 
     public Field(int size, boolean[][] cells) {
         this.size = size;
