@@ -4,9 +4,8 @@ import java.lang.Thread;
 
 public class Main {
     public static void main(String[] args) {
-        final int defaultSize = 40;
         int numberOfGenerations = 50; // TODO: make adjustable
-        Field field = new RandomField(defaultSize);
+        Field field = makeField(args);
         int alive = field.totalAlive();
         int currentGeneration = 1;
 
@@ -27,5 +26,27 @@ public class Main {
             catch (IOException | InterruptedException e) {}
         }
         field.printField();
+    }
+
+    public static Field makeField(String[] args) {
+        String fileName = getFileName(args);
+        if (fileName.equals("")) {
+            return new RandomField();
+        } else {
+            return FieldFromFile.makeFieldFromFile(fileName);
+        }
+    }
+
+    public static String getFileName(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("--file")) {
+                try {
+                    return args[i + 1];
+                } catch (Exception e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+        }
+        return "";
     }
 }

@@ -4,8 +4,8 @@ import java.util.Random;
 
 class RandomField extends Field {
 
-	public RandomField(int size) {
-        super(size);
+	public RandomField() {
+        super(40);
         this.cells = initField(size);
     }
 
