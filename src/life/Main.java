@@ -1,15 +1,12 @@
 package life;
 import java.io.IOException;
-import java.util.Scanner;
 import java.lang.Thread;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, enter field size:");
-        int n = scanner.nextInt();
+        final int defaultSize = 40;
         int numberOfGenerations = 50; // TODO: make adjustable
-        Field field = new Field(n);
+        Field field = new RandomField(defaultSize);
         int alive = field.totalAlive();
         int currentGeneration = 1;
 
