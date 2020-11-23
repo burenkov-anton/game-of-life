@@ -30,11 +30,25 @@ public class Main {
 
     public static Field makeField(String[] args) {
         String fileName = getFileName(args);
+        boolean haveFiguresField = isFiguresField(args);
         if (fileName.equals("")) {
-            return RandomField.makeRandomField();
+            if (haveFiguresField) {
+                return FiguresField.makeFieldFromFigure(FiguresField.glider(), 40);
+            } else {
+                return RandomField.makeRandomField();
+            }
         } else {
             return FieldFromFile.makeFieldFromFile(fileName);
         }
+    }
+
+    public static boolean isFiguresField(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("--figures")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static String getFileName(String[] args) {
