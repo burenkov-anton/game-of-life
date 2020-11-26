@@ -2,23 +2,32 @@ package life;
 
 class FiguresField {
 
-	public static boolean[][] glider() {
-		return new boolean[][] {
-			{false, true, false},
-			{false, false, true},
-			{true, true, true}
-		};
+	public static Figure glider() {
+		return new Figure(
+			new boolean[][] {
+				{false, true, false},
+				{false, false, true},
+				{true, true, true}
+			}, 3);
 	}
 
-	public static Field makeFieldFromFigure(boolean[][] figure, int fieldSize) {
+	public static Figure block() {
+		return new Figure(
+			new boolean[][] {
+				{true, true},
+				{true, true}
+			}, 2);
+	}
+
+	public static Field makeFieldFromFigure(Figure figure, int fieldSize) {
 		boolean[][] cells = new boolean[fieldSize][fieldSize];
 		int currenRow = 0;
-		for (int row = 0; row < figure.length; row++) {
+		for (int row = 0; row < figure.getSize(); row++) {
 			currenRow = row;
 			int currentCol = 0;
-			for (int col = 0; col < figure[row].length; col++) {
+			for (int col = 0; col < figure.getCells()[row].length; col++) {
 				currentCol = col;
-				cells[row][col] = figure[row][col];
+				cells[row][col] = figure.getCells()[row][col];
 			}
 			if (currentCol < fieldSize) {
 				for (int i = currentCol + 1; i < fieldSize; i++) {
